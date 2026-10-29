@@ -49,12 +49,13 @@ Fonts come from `@fontsource/anton`, `@fontsource/eb-garamond`, and `@fontsource
 
 ## Logo files
 
-- `logo/wordmark-color.svg`: approved direction (Option A, stacked slant), ink and red on transparent
-- `logo/wordmark-mono.svg`: single color, ink
-- `logo/wordmark-reversed.svg`: cream on an ink background
-- `logo/wordmark-option-*.svg`: the three original drafts, kept for reference
+- `logo/bernie-color.svg`: the BERNIE logo, red crown and black letters (traced from `logo/source/bernie-logo-original.png`)
+- `logo/bernie-mono.svg`: single color, ink
+- `logo/bernie-reversed.svg`: cream on an ink background
+- `logo/bernie-crown.svg`: the red crown on its own, used as the transition element
+- `logo/wordmark-option-*.svg`: the earlier Anton drafts, kept for reference
 
-The wordmark is a first draft. Replace it with your own drawing when ready, keeping the same file names.
+The logo is traced from a PNG, so check the curves at large sizes. If you have the original vector file, replace these files and keep the names.
 
 ## Grid
 

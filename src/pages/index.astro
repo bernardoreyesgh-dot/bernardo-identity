@@ -6,9 +6,10 @@ import { contrast, rating, rgbToCmyk, hexToRgb } from '../lib/color.js';
 import panel1 from '../assets/moodboard/panel-1.jpg';
 import panel2 from '../assets/moodboard/panel-2.jpg';
 import panel3 from '../assets/moodboard/panel-3.jpg';
-import logoColor from '../../logo/wordmark-color.svg?url';
-import logoMono from '../../logo/wordmark-mono.svg?url';
-import logoReversed from '../../logo/wordmark-reversed.svg?url';
+import logoColor from '../../logo/bernie-color.svg?url';
+import logoCrown from '../../logo/bernie-crown.svg?url';
+import logoMono from '../../logo/bernie-mono.svg?url';
+import logoReversed from '../../logo/bernie-reversed.svg?url';
 
 const c = colorTokens.color;
 const palette = [
@@ -41,7 +42,8 @@ const g = gridTokens.grid;
     </header>
 
     <!-- 01 Moodboard and intent -->
-    <section class="section" id="intent" aria-labelledby="intent-title">
+    <section class="section reveal" id="intent" aria-labelledby="intent-title">
+      <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
       <p class="caption">01</p>
       <h2 id="intent-title" class="h2">Moodboard and intent</h2>
       <p class="body">The identity starts from three sources. Each one contributes a rule: the posters give the bold type and diagonals, Bogotá gives warm color and brick, and old print gives the handmade texture.</p>
@@ -68,11 +70,26 @@ const g = gridTokens.grid;
       </ul>
     </section>
 
+    <section class="section reveal" id="crown" aria-labelledby="crown-title">
+      <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <p class="caption">Crown</p>
+      <h2 id="crown-title" class="h2">Crown and transitions</h2>
+      <p class="body">The red crown is the signature element. Use it to move the reader from one section to the next: it slides in at the start of each section, and it can mark a page turn, a project cover, or a link. Keep the motion short and simple, and turn it off for readers who ask for reduced motion.</p>
+      <div class="crown-row">
+        <img src={logoCrown} alt="Crown mark" class="crown-large" />
+        <div>
+          <p class="body"><strong>Do:</strong> use the crown in Constructivist Red, on cream or ink, at least 24 px tall.</p>
+          <p class="body"><strong>Don't:</strong> separate the crown from the letters in the main logo, or rotate it to a new angle.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- 02 Logo -->
-    <section class="section" id="logo" aria-labelledby="logo-title">
+    <section class="section reveal" id="logo" aria-labelledby="logo-title">
+      <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
       <p class="caption">02</p>
       <h2 id="logo-title" class="h2">Logo</h2>
-      <p class="body">The wordmark is set in Anton, in two stacked lines with the diagonal lean. It is a first draft and may be replaced with a hand drawing.</p>
+      <p class="body">The logo is BERNIE: a red crown mark beside black letters, traced from the original artwork. The crown is also the transition element for the whole system (see Crown below).</p>
 
       <div class="logo-row">
         <div class="tile tile-cream"><img src={logoColor} alt="Full color wordmark" /><p class="caption">Full color</p></div>
@@ -84,7 +101,7 @@ const g = gridTokens.grid;
       <div class="logo-rules">
         <div class="clear-space">
           <div class="clear-inner"><img src={logoMono} alt="Wordmark with clear space around it" /></div>
-          <p class="caption">Keep clear space equal to the height of the B in BERNARDO on all sides.</p>
+          <p class="caption">Keep clear space equal to the height of the crown on all sides.</p>
         </div>
         <div>
           <p class="body"><strong>Minimum size.</strong> 120 px wide on screen. 30 mm wide in print.</p>
@@ -103,7 +120,8 @@ const g = gridTokens.grid;
     </section>
 
     <!-- 03 Color -->
-    <section class="section" id="color" aria-labelledby="color-title">
+    <section class="section reveal" id="color" aria-labelledby="color-title">
+      <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
       <p class="caption">03</p>
       <h2 id="color-title" class="h2">Color</h2>
       <p class="body">Six colors, all from the moodboard. Use Ink Black and Paper Cream for most text and backgrounds. Use Constructivist Red for emphasis. Use the others as accents.</p>
@@ -151,7 +169,8 @@ const g = gridTokens.grid;
     </section>
 
     <!-- 04 Typography -->
-    <section class="section" id="type" aria-labelledby="type-title">
+    <section class="section reveal" id="type" aria-labelledby="type-title">
+      <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
       <p class="caption">04</p>
       <h2 id="type-title" class="h2">Typography</h2>
       <p class="body">Three typefaces, each with one job. Anton for display. EB Garamond for reading text. IBM Plex Mono for captions and labels. All three include Spanish accents.</p>
@@ -192,7 +211,8 @@ const g = gridTokens.grid;
     </section>
 
     <!-- 05 Grid -->
-    <section class="section" id="grid" aria-labelledby="grid-title">
+    <section class="section reveal" id="grid" aria-labelledby="grid-title">
+      <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
       <p class="caption">05</p>
       <h2 id="grid-title" class="h2">Grid</h2>
       <p class="body">One grid for every layout, from phone to desktop. The grid is built from tokens, and the diagonal is the single rule that breaks it on purpose.</p>
@@ -220,7 +240,8 @@ const g = gridTokens.grid;
     </section>
 
     <!-- 06 Applied examples -->
-    <section class="section" id="examples" aria-labelledby="examples-title">
+    <section class="section reveal" id="examples" aria-labelledby="examples-title">
+      <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
       <p class="caption">06</p>
       <h2 id="examples-title" class="h2">Applied examples</h2>
       <p class="body">Three uses of the system. The copy is sample text.</p>
@@ -262,6 +283,21 @@ const g = gridTokens.grid;
 </Base>
 
 <script>
+  document.documentElement.classList.add('js');
+  const reveals = document.querySelectorAll<HTMLElement>('.reveal');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    },
+    { threshold: 0.2 }
+  );
+  reveals.forEach((el) => observer.observe(el));
+
   const toggle = document.querySelector<HTMLButtonElement>('[data-grid-toggle]');
   const overlay = document.querySelector<HTMLElement>('[data-grid-overlay]');
 
@@ -799,6 +835,51 @@ const g = gridTokens.grid;
 
     .swatches {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Crown: transition element. Slides in from the left as each section enters view. */
+  .reveal {
+    position: relative;
+  }
+
+  .crown-mark {
+    position: absolute;
+    top: calc(var(--space-7) * -0.5);
+    left: 0;
+    height: 2.5rem;
+    width: auto;
+    pointer-events: none;
+    transform: none;
+  }
+
+  .js .reveal:not(.is-visible) .crown-mark {
+    transform: translateX(-160%);
+  }
+
+  .crown-mark,
+  .js .reveal .crown-mark {
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .crown-row {
+    display: grid;
+    gap: var(--space-5);
+    align-items: center;
+    margin-top: var(--space-5);
+  }
+
+  .crown-large {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .crown-mark,
+    .js .reveal .crown-mark {
+      transition: none;
+      transform: none;
     }
   }
 </style>
