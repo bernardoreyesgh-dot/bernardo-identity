@@ -8,6 +8,7 @@ import panel2 from '../assets/moodboard/panel-2.jpg';
 import panel3 from '../assets/moodboard/panel-3.jpg';
 import logoColor from '../../logo/bernie-color.svg?url';
 import logoCrown from '../../logo/bernie-crown.svg?url';
+import logoCrane from '../../logo/bernie-crane.svg?url';
 import logoMono from '../../logo/bernie-mono.svg?url';
 import logoReversed from '../../logo/bernie-reversed.svg?url';
 
@@ -44,6 +45,7 @@ const g = gridTokens.grid;
     <!-- 01 Moodboard and intent -->
     <section class="section reveal" id="intent" aria-labelledby="intent-title">
       <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <img class="crane-mark" src={logoCrane} alt="" aria-hidden="true" />
       <p class="caption">01</p>
       <h2 id="intent-title" class="h2">Moodboard and intent</h2>
       <p class="body">The identity starts from three sources. Each one contributes a rule: the posters give the bold type and diagonals, Bogotá gives warm color and brick, and old print gives the handmade texture.</p>
@@ -72,9 +74,10 @@ const g = gridTokens.grid;
 
     <section class="section reveal" id="crown" aria-labelledby="crown-title">
       <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <img class="crane-mark" src={logoCrane} alt="" aria-hidden="true" />
       <p class="caption">Crown</p>
       <h2 id="crown-title" class="h2">Crown and transitions</h2>
-      <p class="body">The red crown is the signature element. Use it to move the reader from one section to the next: it slides in at the start of each section, and it can mark a page turn, a project cover, or a link. Keep the motion short and simple, and turn it off for readers who ask for reduced motion.</p>
+      <p class="body">The red crown and the red crane truss are the two transition elements. Use it to move the reader from one section to the next: the crown slides in from the left at the top of each section and the crane truss slides in from the right at the bottom. Use them to mark a page turn, a project cover, or a link. Keep the motion short and simple, and turn it off for readers who ask for reduced motion.</p>
       <div class="crown-row">
         <img src={logoCrown} alt="Crown mark" class="crown-large" />
         <div>
@@ -87,6 +90,7 @@ const g = gridTokens.grid;
     <!-- 02 Logo -->
     <section class="section reveal" id="logo" aria-labelledby="logo-title">
       <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <img class="crane-mark" src={logoCrane} alt="" aria-hidden="true" />
       <p class="caption">02</p>
       <h2 id="logo-title" class="h2">Logo</h2>
       <p class="body">The logo is BERNIE: a red crown mark beside black letters, traced from the original artwork. The crown is also the transition element for the whole system (see Crown below).</p>
@@ -122,6 +126,7 @@ const g = gridTokens.grid;
     <!-- 03 Color -->
     <section class="section reveal" id="color" aria-labelledby="color-title">
       <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <img class="crane-mark" src={logoCrane} alt="" aria-hidden="true" />
       <p class="caption">03</p>
       <h2 id="color-title" class="h2">Color</h2>
       <p class="body">Six colors, all from the moodboard. Use Ink Black and Paper Cream for most text and backgrounds. Use Constructivist Red for emphasis. Use the others as accents.</p>
@@ -173,6 +178,7 @@ const g = gridTokens.grid;
     <!-- 04 Typography -->
     <section class="section reveal" id="type" aria-labelledby="type-title">
       <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <img class="crane-mark" src={logoCrane} alt="" aria-hidden="true" />
       <p class="caption">04</p>
       <h2 id="type-title" class="h2">Typography</h2>
       <p class="body">Three typefaces, each with one job. Anton for display. EB Garamond for reading text. IBM Plex Mono for captions and labels. All three include Spanish accents.</p>
@@ -215,6 +221,7 @@ const g = gridTokens.grid;
     <!-- 05 Grid -->
     <section class="section reveal" id="grid" aria-labelledby="grid-title">
       <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <img class="crane-mark" src={logoCrane} alt="" aria-hidden="true" />
       <p class="caption">05</p>
       <h2 id="grid-title" class="h2">Grid</h2>
       <p class="body">One grid for every layout, from phone to desktop. The grid is built from tokens, and the diagonal is the single rule that breaks it on purpose.</p>
@@ -244,6 +251,7 @@ const g = gridTokens.grid;
     <!-- 06 Applied examples -->
     <section class="section reveal" id="examples" aria-labelledby="examples-title">
       <img class="crown-mark" src={logoCrown} alt="" aria-hidden="true" />
+      <img class="crane-mark" src={logoCrane} alt="" aria-hidden="true" />
       <p class="caption">06</p>
       <h2 id="examples-title" class="h2">Applied examples</h2>
       <p class="body">Three uses of the system. The copy is sample text.</p>
@@ -880,6 +888,30 @@ const g = gridTokens.grid;
   @media (prefers-reduced-motion: reduce) {
     .crown-mark,
     .js .reveal .crown-mark {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  /* Crane: second transition element. A red truss that slides in from the right at the bottom edge. */
+  .crane-mark {
+    position: absolute;
+    bottom: calc(var(--space-7) * -0.5);
+    right: 0;
+    width: min(16rem, 45%);
+    height: auto;
+    pointer-events: none;
+    transform: none;
+    transition: transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+  }
+
+  .js .reveal:not(.is-visible) .crane-mark {
+    transform: translateX(120%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .crane-mark,
+    .js .reveal .crane-mark {
       transition: none;
       transform: none;
     }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="120" viewBox="0 0 1200 120" role="img" aria-label="Red crane truss">
+  <title>Red crane truss</title>
+  <g fill="none" stroke="#EC4537" stroke-width="10" stroke-linejoin="miter" stroke-linecap="square">
+    <path d="M0 5 H1200 M0 115 H1200"/>
+    <path d="M0 115 L60 5 L120 115 L180 5 L240 115 L300 5 L360 115 L420 5 L480 115 L540 5 L600 115 L660 5 L720 115 L780 5 L840 115 L900 5 L960 115 L1020 5 L1080 115 L1140 5 L1200 115"/>
+    <path d="M60 5 V115 M180 5 V115 M300 5 V115 M420 5 V115 M540 5 V115 M660 5 V115 M780 5 V115 M900 5 V115 M1020 5 V115 M1140 5 V115"/>
+  </g>
+</svg>
