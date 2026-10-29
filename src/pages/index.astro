@@ -13,7 +13,7 @@ import logoReversed from '../../logo/bernie-reversed.svg?url';
 
 const c = colorTokens.color;
 const palette = [
-  { name: 'Constructivist Red', hex: c.red.constructivist.value, role: 'Headlines and key accents.', source: 'VKhUTEMAS and Bernie posters' },
+  { name: 'Constructivist Red', hex: c.red.constructivist.value, role: 'Headlines, key accents, and the crown.', source: 'The BERNIE logo' },
   { name: 'Ink Black', hex: c.ink.black.value, role: 'Text and structure.', source: 'Panel 1 and the book covers' },
   { name: 'Paper Cream', hex: c.paper.cream.value, role: 'Page background.', source: 'Catechism and Lenin posters' },
   { name: 'Brick Terracotta', hex: c.brick.terracotta.value, role: 'Secondary accent.', source: 'Salmona-style brick, panel 2' },
@@ -165,7 +165,9 @@ const g = gridTokens.grid;
           </tbody>
         </table>
       </div>
-      <p class="body"><strong>Approved text pairs:</strong> Ink on Cream, Cream on Ink, Red on Cream, Cream on Red, Yellow on Ink, Terracotta on Ink, and Warm Gray on Ink (4.5:1, just passing). Terracotta and Warm Gray on Cream pass only for large headings. Yellow on Cream does not pass for text, so use Yellow only as a shape or on Ink.</p>
+      <p class="body"><strong>Text pairs for body text (AA, 4.5:1 or higher):</strong> Ink on Cream, Cream on Ink, Yellow on Ink, Terracotta on Ink, and Warm Gray on Ink (4.5:1, just passing).</p>
+      <p class="body"><strong>Large headings only (24 px and up, 3:1 or higher):</strong> Red on Cream (3.7:1), Cream on Red (3.7:1), Terracotta on Cream (3.1:1), and Warm Gray on Cream (3.6:1).</p>
+      <p class="body"><strong>Not for text:</strong> Red on Ink (4.45:1) misses AA by a small margin, so use it for shapes, the crown, and large headings only. Yellow on Cream (2.0:1) fails, so use Yellow as a shape or on Ink.</p>
     </section>
 
     <!-- 04 Typography -->
