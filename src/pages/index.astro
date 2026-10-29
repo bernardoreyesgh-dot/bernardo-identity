@@ -1,61 +1,263 @@
 ---
 import Base from '../layouts/Base.astro';
-import tokens from '../../tokens/grid.json';
+import colorTokens from '../../tokens/color.json';
+import gridTokens from '../../tokens/grid.json';
+import { contrast, rating, rgbToCmyk, hexToRgb } from '../lib/color.js';
+import panel1 from '../assets/moodboard/panel-1.jpg';
+import panel2 from '../assets/moodboard/panel-2.jpg';
+import panel3 from '../assets/moodboard/panel-3.jpg';
+import logoColor from '../../logo/wordmark-color.svg?url';
+import logoMono from '../../logo/wordmark-mono.svg?url';
+import logoReversed from '../../logo/wordmark-reversed.svg?url';
 
-const grid = tokens.grid;
-const rows = [
-  ['Columns', `${grid.columns.mobile.value} below 768px, ${grid.columns.tablet.value} from 768px, ${grid.columns.desktop.value} from 1024px`],
-  ['Gutter', `${grid.gutter.mobile.value} below 768px, ${grid.gutter.desktop.value} from 768px`],
-  ['Margin', `${grid.margin.mobile.value} below 768px, ${grid.margin.desktop.value} from 768px`],
-  ['Max width', grid.maxWidth.value],
-  ['Breakpoints', `${grid.breakpoint.tablet.value} tablet, ${grid.breakpoint.desktop.value} desktop`],
-  ['Diagonal', `${grid.tilt.value} tilt on key elements`],
-];
+const c = colorTokens.color;
+const palette = [
+  { name: 'Constructivist Red', hex: c.red.constructivist.value, role: 'Headlines and key accents.', source: 'VKhUTEMAS and Bernie posters' },
+  { name: 'Ink Black', hex: c.ink.black.value, role: 'Text and structure.', source: 'Panel 1 and the book covers' },
+  { name: 'Paper Cream', hex: c.paper.cream.value, role: 'Page background.', source: 'Catechism and Lenin posters' },
+  { name: 'Brick Terracotta', hex: c.brick.terracotta.value, role: 'Secondary accent.', source: 'Salmona-style brick, panel 2' },
+  { name: 'Bauhaus Yellow', hex: c.bauhaus.yellow.value, role: 'Small accents and highlights.', source: 'Nesting tables and posters' },
+  { name: 'Warm Gray', hex: c.neutral['warm-gray'].value, role: 'Captions and secondary text.', source: 'Neutral gray across the board' },
+].map((s) => ({ ...s, rgb: hexToRgb(s.hex).join(', '), cmyk: rgbToCmyk(s.hex) }));
+
+const matrix = palette.map((fg) =>
+  palette.map((bg) => {
+    if (fg.hex === bg.hex) return null;
+    const ratio = contrast(fg.hex, bg.hex);
+    return { ratio: ratio.toFixed(2), rating: rating(ratio) };
+  })
+);
+
+const g = gridTokens.grid;
 ---
 <Base title="Bernardo Reyes — Identity Guidelines">
-  <main class="grid">
-    <section class="section">
-      <h1 class="display">Bernardo Reyes</h1>
-      <p class="lead">Identity guidelines are in progress. This section shows the layout grid.</p>
+  <main class="page grid">
+
+    <!-- Cover -->
+    <header class="section cover">
+      <img class="cover-logo" src={logoColor} alt="Bernardo Reyes" width="420" />
+      <p class="caption">Visual identity guidelines · v0.1 first draft</p>
+      <p class="lead">A bold, structured, warm identity: Colombian modernism meeting Constructivist graphic design.</p>
+    </header>
+
+    <!-- 01 Moodboard and intent -->
+    <section class="section" id="intent" aria-labelledby="intent-title">
+      <p class="caption">01</p>
+      <h2 id="intent-title" class="h2">Moodboard and intent</h2>
+      <p class="body">The identity starts from three sources. Each one contributes a rule: the posters give the bold type and diagonals, Bogotá gives warm color and brick, and old print gives the handmade texture.</p>
+      <div class="panels">
+        <figure>
+          <img src={panel1.src} alt="Soviet Constructivist posters, VKhUTEMAS type, and Bogotá modernism street scenes" />
+          <figcaption><strong>Constructivism and print.</strong> Red, black, cream, heavy angled type.</figcaption>
+        </figure>
+        <figure>
+          <img src={panel2.src} alt="Bogotá modernism towers, Salmona brick architecture, and Colombian book covers" />
+          <figcaption><strong>Bogotá modernism.</strong> Brick towers, terracotta, 1970s street photos.</figcaption>
+        </figure>
+        <figure>
+          <img src={panel3.src} alt="Old engravings, a La Fontaine cover, a catechism page, and Bauhaus furniture" />
+          <figcaption><strong>Old print and Bauhaus.</strong> Engravings, serif type, primary colors.</figcaption>
+        </figure>
+      </div>
+      <h3 class="h3">Intent</h3>
+      <ul class="principles">
+        <li><strong>Bold.</strong> Heavy display type and strong color blocks.</li>
+        <li><strong>Structured.</strong> A 12-column grid and one diagonal rule.</li>
+        <li><strong>Warm.</strong> Terracotta, cream, and wood tones over cold white.</li>
+        <li><strong>A little handmade.</strong> Old print serifs and imperfect edges.</li>
+      </ul>
     </section>
 
-    <section class="section" aria-labelledby="grid-title">
+    <!-- 02 Logo -->
+    <section class="section" id="logo" aria-labelledby="logo-title">
+      <p class="caption">02</p>
+      <h2 id="logo-title" class="h2">Logo</h2>
+      <p class="body">The wordmark is set in Anton, in two stacked lines with the diagonal lean. It is a first draft and may be replaced with a hand drawing.</p>
+
+      <div class="logo-row">
+        <div class="tile tile-cream"><img src={logoColor} alt="Full color wordmark" /><p class="caption">Full color</p></div>
+        <div class="tile tile-cream"><img src={logoMono} alt="Monochrome wordmark" /><p class="caption">Monochrome</p></div>
+        <div class="tile tile-ink"><img src={logoReversed} alt="Reversed wordmark on ink" /><p class="caption">Reversed</p></div>
+      </div>
+
+      <h3 class="h3">Clear space and minimum size</h3>
+      <div class="logo-rules">
+        <div class="clear-space">
+          <div class="clear-inner"><img src={logoMono} alt="Wordmark with clear space around it" /></div>
+          <p class="caption">Keep clear space equal to the height of the B in BERNARDO on all sides.</p>
+        </div>
+        <div>
+          <p class="body"><strong>Minimum size.</strong> 120 px wide on screen. 30 mm wide in print.</p>
+          <img class="min-size" src={logoMono} alt="Wordmark at minimum size" width="120" />
+        </div>
+      </div>
+
+      <h3 class="h3">Misuse</h3>
+      <div class="misuse">
+        <figure class="misuse-item"><div class="misuse-stage"><img class="mis-stretch" src={logoMono} alt="Stretched wordmark" /></div><figcaption>Do not stretch or squash.</figcaption></figure>
+        <figure class="misuse-item"><div class="misuse-stage"><img class="mis-rotate" src={logoMono} alt="Wordmark rotated" /></div><figcaption>Do not rotate or change the angle.</figcaption></figure>
+        <figure class="misuse-item"><div class="misuse-stage"><img class="mis-recolor" src={logoColor} alt="Wordmark in off-palette blue" /></div><figcaption>Do not recolor outside the palette.</figcaption></figure>
+        <figure class="misuse-item"><div class="misuse-stage"><img class="mis-shadow" src={logoMono} alt="Wordmark with drop shadow" /></div><figcaption>Do not add shadows or effects.</figcaption></figure>
+        <figure class="misuse-item"><div class="misuse-stage misuse-red"><img class="mis-redonred" src={logoColor} alt="Red wordmark on red background" /></div><figcaption>Do not place the red wordmark on red.</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 03 Color -->
+    <section class="section" id="color" aria-labelledby="color-title">
+      <p class="caption">03</p>
+      <h2 id="color-title" class="h2">Color</h2>
+      <p class="body">Six colors, all from the moodboard. Use Ink Black and Paper Cream for most text and backgrounds. Use Constructivist Red for emphasis. Use the others as accents.</p>
+
+      <div class="swatches">
+        {palette.map((s) => (
+          <article class="swatch">
+            <div class="swatch-chip" style={`background: ${s.hex}`}></div>
+            <h3 class="h3">{s.name}</h3>
+            <p class="caption">{s.role}</p>
+            <dl class="values">
+              <div><dt>HEX</dt><dd>{s.hex}</dd></div>
+              <div><dt>RGB</dt><dd>{s.rgb}</dd></div>
+              <div><dt>CMYK</dt><dd>{s.cmyk.c}, {s.cmyk.m}, {s.cmyk.y}, {s.cmyk.k}</dd></div>
+            </dl>
+            <p class="caption">From: {s.source}</p>
+          </article>
+        ))}
+      </div>
+      <p class="caption">CMYK values are approximate conversions. Confirm with a printer proof before a print run.</p>
+
+      <h3 class="h3">Contrast (WCAG 2.1)</h3>
+      <p class="body">Each cell shows the contrast of the row color used as text on the column color used as background. AA means 4.5:1 or higher, which passes for all text. Large only means 3:1 or higher, which passes only for headings of 24px and up.</p>
+      <div class="table-wrap">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col">Text ↓ / Background →</th>
+              {palette.map((s) => <th scope="col">{s.name}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {palette.map((fg, i) => (
+              <tr>
+                <th scope="row">{fg.name}</th>
+                {matrix[i].map((cell) =>
+                  cell === null ? <td class="same">—</td> : <td class={`rating-${cell.rating === 'AA' ? 'aa' : cell.rating === 'Fail' ? 'fail' : 'large'}`}>{cell.ratio}<br /><small>{cell.rating}</small></td>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="body"><strong>Approved text pairs:</strong> Ink on Cream, Cream on Ink, Red on Cream, Cream on Red, Yellow on Ink, Terracotta on Ink, and Warm Gray on Ink (4.5:1, just passing). Terracotta and Warm Gray on Cream pass only for large headings. Yellow on Cream does not pass for text, so use Yellow only as a shape or on Ink.</p>
+    </section>
+
+    <!-- 04 Typography -->
+    <section class="section" id="type" aria-labelledby="type-title">
+      <p class="caption">04</p>
+      <h2 id="type-title" class="h2">Typography</h2>
+      <p class="body">Three typefaces, each with one job. Anton for display. EB Garamond for reading text. IBM Plex Mono for captions and labels. All three include Spanish accents.</p>
+
+      <div class="type-spec">
+        <div class="type-row">
+          <p class="caption">Display · Anton · 104 px</p>
+          <p class="t-display">Diseño de servicios</p>
+        </div>
+        <div class="type-row">
+          <p class="caption">Heading 1 · Anton · 64 px</p>
+          <p class="t-h1">Bogotá en la ciudad</p>
+        </div>
+        <div class="type-row">
+          <p class="caption">Heading 2 · Anton · 40 px</p>
+          <p class="t-h2">Proyecto de servicio</p>
+        </div>
+        <div class="type-row">
+          <p class="caption">Lead · EB Garamond · 22 px</p>
+          <p class="t-lead">Un sistema visual sólido, cálido y un poco artesanal.</p>
+        </div>
+        <div class="type-row">
+          <p class="caption">Body · EB Garamond · 18 px · line height 1.6</p>
+          <p class="t-body">Las ciudades cambian con el tiempo. El diseño de servicios ayuda a entender cómo las personas viven, se mueven y encuentran lo que necesitan.</p>
+        </div>
+        <div class="type-row">
+          <p class="caption">Caption · IBM Plex Mono · 13 px · uppercase</p>
+          <p class="t-caption">Foto: Bogotá, años 70 · Portafolio 2026</p>
+        </div>
+      </div>
+
+      <h3 class="h3">Hierarchy rules</h3>
+      <ul class="principles">
+        <li>One display line per layout. Keep it short.</li>
+        <li>Body text stays in EB Garamond. Never set body text in Anton.</li>
+        <li>Captions and labels are uppercase Plex Mono, 13 px at minimum.</li>
+      </ul>
+    </section>
+
+    <!-- 05 Grid -->
+    <section class="section" id="grid" aria-labelledby="grid-title">
+      <p class="caption">05</p>
       <h2 id="grid-title" class="h2">Grid</h2>
-      <p>
-        One grid for every layout. Columns, gutters, and margins come from the tokens, so the same
-        rules apply to the page, the PDF, and the applied examples.
-      </p>
+      <p class="body">One grid for every layout, from phone to desktop. The grid is built from tokens, and the diagonal is the single rule that breaks it on purpose.</p>
 
       <div class="grid-demo">
         <div class="grid-track">
           <div class="block block-wide">Wide block</div>
-          <div class="block block-narrow">Narrow</div>
-          <div class="block block-narrow">Narrow</div>
+          <div class="block">Narrow</div>
+          <div class="block">Narrow</div>
         </div>
         <div class="grid-overlay" data-grid-overlay hidden></div>
       </div>
-
-      <p>
-        <button type="button" class="toggle" data-grid-toggle aria-pressed="false">Show grid</button>
-      </p>
+      <p><button type="button" class="toggle no-print" data-grid-toggle aria-pressed="false">Show grid</button></p>
 
       <table class="spec">
         <tbody>
-          {rows.map(([label, value]) => (
-            <tr>
-              <th scope="row">{label}</th>
-              <td>{value}</td>
-            </tr>
-          ))}
+          <tr><th scope="row">Columns</th><td>{g.columns.mobile.value} below 768 px · {g.columns.tablet.value} from 768 px · {g.columns.desktop.value} from 1024 px</td></tr>
+          <tr><th scope="row">Gutter</th><td>{g.gutter.mobile.value} below 768 px · {g.gutter.desktop.value} from 768 px</td></tr>
+          <tr><th scope="row">Margin</th><td>{g.margin.mobile.value} below 768 px · {g.margin.desktop.value} from 768 px</td></tr>
+          <tr><th scope="row">Max width</th><td>{g.maxWidth.value}</td></tr>
+          <tr><th scope="row">Diagonal</th><td>{g.tilt.value} tilt on key elements only</td></tr>
         </tbody>
       </table>
-    </section>
-
-    <section class="section" aria-labelledby="tilt-title">
-      <h2 id="tilt-title" class="h2">Diagonal</h2>
-      <p>The diagonal is the one rule that breaks the grid on purpose. Use it for dividers and key elements only.</p>
       <div class="tilt-rule" aria-hidden="true"></div>
     </section>
+
+    <!-- 06 Applied examples -->
+    <section class="section" id="examples" aria-labelledby="examples-title">
+      <p class="caption">06</p>
+      <h2 id="examples-title" class="h2">Applied examples</h2>
+      <p class="body">Three uses of the system. The copy is sample text.</p>
+
+      <div class="examples">
+        <figure class="ex ex-cover">
+          <div class="cover-card">
+            <img src={logoReversed} alt="" class="ex-logo" />
+            <p class="t-h1">Diseño de servicios</p>
+            <p class="t-caption">Portafolio · Service Design</p>
+          </div>
+          <figcaption>Portfolio cover (4:5)</figcaption>
+        </figure>
+
+        <figure class="ex ex-slide">
+          <div class="slide-card">
+            <p class="t-caption">Proyecto 01 · Bogotá</p>
+            <p class="t-h2">Un mapa de la ciudad</p>
+            <div class="tilt-rule tilt-rule-sm" aria-hidden="true"></div>
+            <img src={panel2.src} alt="" class="ex-photo" />
+          </div>
+          <figcaption>Project slide (16:9)</figcaption>
+        </figure>
+
+        <figure class="ex ex-banner">
+          <div class="banner-card">
+            <img src={logoReversed} alt="" class="ex-logo-sm" />
+            <p class="t-caption">Bernardo Reyes · Service Design · SCAD</p>
+          </div>
+          <figcaption>LinkedIn banner (4:1)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer class="section footer">
+      <p class="caption">Bernardo Reyes · Visual identity · First draft</p>
+    </footer>
   </main>
 </Base>
 
@@ -73,23 +275,42 @@ const rows = [
 </script>
 
 <style>
-  .section {
-    padding-block: var(--space-7);
+  .page {
+    padding-bottom: var(--space-7);
   }
 
-  .display {
-    font-family: var(--font-family-display);
-    font-weight: var(--font-weight-regular);
-    font-size: var(--font-size-display);
-    line-height: var(--line-height-tight);
-    color: var(--color-red-constructivist);
-    text-transform: uppercase;
-    margin: 0 0 var(--space-5);
+  .section {
+    padding-block: var(--space-7);
+    border-top: 1px solid var(--color-ink-black);
+  }
+
+  .cover {
+    border-top: 0;
+    padding-block: var(--space-8) var(--space-7);
+  }
+
+  .cover-logo {
+    width: min(420px, 80%);
+    height: auto;
+    display: block;
+    margin-bottom: var(--space-5);
   }
 
   .lead {
     font-size: var(--font-size-lead);
     max-width: 40ch;
+  }
+
+  .body {
+    max-width: 62ch;
+  }
+
+  .caption {
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 var(--space-3);
   }
 
   .h2 {
@@ -98,9 +319,302 @@ const rows = [
     font-size: var(--font-size-h2);
     line-height: var(--line-height-heading);
     text-transform: uppercase;
+    color: var(--color-red-constructivist);
     margin: 0 0 var(--space-4);
   }
 
+  .h3 {
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-heading);
+    text-transform: uppercase;
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  .principles {
+    padding-left: var(--space-5);
+    max-width: 62ch;
+  }
+
+  /* Moodboard */
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-block: var(--space-5);
+  }
+
+  .panels img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .panels figcaption {
+    font-size: var(--font-size-caption);
+    font-family: var(--font-family-caption);
+    margin-top: var(--space-2);
+  }
+
+  /* Logo */
+  .logo-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .tile {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .tile img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  .tile-cream {
+    background: var(--color-paper-cream);
+    border: 1px solid var(--color-ink-black);
+  }
+
+  .tile-ink {
+    background: var(--color-ink-black);
+    color: var(--color-paper-cream);
+  }
+
+  .logo-rules {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .clear-inner {
+    display: inline-block;
+    padding: var(--space-5);
+    outline: 1px dashed var(--color-red-constructivist);
+    outline-offset: 0;
+  }
+
+  .clear-inner img {
+    width: 260px;
+    height: auto;
+    display: block;
+  }
+
+  .min-size {
+    display: block;
+    margin-top: var(--space-3);
+  }
+
+  .misuse {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .misuse-stage {
+    background: var(--color-paper-cream);
+    border: 1px solid var(--color-ink-black);
+    padding: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 9rem;
+    overflow: hidden;
+  }
+
+  .misuse-stage img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+  }
+
+  .misuse-red {
+    background: var(--color-red-constructivist);
+  }
+
+  .misuse-item figcaption {
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    margin-top: var(--space-2);
+  }
+
+  .mis-stretch {
+    transform: scaleX(1.5);
+  }
+
+  .mis-rotate {
+    transform: rotate(-24deg);
+  }
+
+  .mis-recolor {
+    filter: hue-rotate(160deg) saturate(1.4);
+  }
+
+  .mis-shadow {
+    filter: drop-shadow(6px 6px 0 var(--color-brick-terracotta));
+  }
+
+  /* Color */
+  .swatches {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .swatch-chip {
+    height: 8rem;
+    border: 1px solid var(--color-ink-black);
+    margin-bottom: var(--space-3);
+  }
+
+  .swatch h3 {
+    margin-top: 0;
+    font-size: var(--font-size-h3);
+  }
+
+  .values {
+    margin: var(--space-3) 0;
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+  }
+
+  .values div {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-ink-black);
+    padding: var(--space-1) 0;
+  }
+
+  .values dt {
+    font-weight: var(--font-weight-medium);
+  }
+
+  .values dd {
+    margin: 0;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin-block: var(--space-4);
+  }
+
+  .matrix {
+    border-collapse: collapse;
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+    width: 100%;
+    min-width: 42rem;
+  }
+
+  .matrix th,
+  .matrix td {
+    border: 1px solid var(--color-paper-cream);
+    padding: var(--space-2);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .matrix thead th {
+    background: var(--color-ink-black);
+    color: var(--color-paper-cream);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .matrix tbody th {
+    background: var(--color-ink-black);
+    color: var(--color-paper-cream);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .matrix .same {
+    background: var(--color-paper-cream);
+    color: var(--color-neutral-warm-gray);
+  }
+
+  .rating-aa {
+    background: #dfeedd;
+    color: var(--color-ink-black);
+  }
+
+  .rating-large {
+    background: #f5e7c4;
+    color: var(--color-ink-black);
+  }
+
+  .rating-fail {
+    background: #f4d6d2;
+    color: var(--color-ink-black);
+  }
+
+  /* Typography */
+  .type-spec {
+    display: grid;
+    gap: var(--space-5);
+    margin-block: var(--space-5);
+  }
+
+  .type-row {
+    border-top: 1px solid var(--color-ink-black);
+    padding-top: var(--space-3);
+  }
+
+  .type-row .caption {
+    margin-bottom: var(--space-2);
+  }
+
+  .t-display {
+    font-family: var(--font-family-display);
+    font-size: 4.5rem;
+    line-height: var(--line-height-tight);
+    text-transform: uppercase;
+    color: var(--color-red-constructivist);
+    margin: 0;
+  }
+
+  .t-h1 {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-tight);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .t-h2 {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-heading);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .t-lead {
+    font-size: var(--font-size-lead);
+    margin: 0;
+  }
+
+  .t-body {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .t-caption {
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
+
+  /* Grid */
   .grid-demo {
     position: relative;
     margin-block: var(--space-5);
@@ -118,10 +632,6 @@ const rows = [
 
   .block-wide {
     grid-column: span 2;
-  }
-
-  .block-narrow {
-    grid-column: span 1;
   }
 
   .toggle {
@@ -154,5 +664,141 @@ const rows = [
   .spec th {
     width: 30%;
     font-weight: var(--font-weight-medium);
+  }
+
+  .tilt-rule-sm {
+    height: var(--space-1);
+    margin-block: var(--space-3);
+  }
+
+  /* Applied examples */
+  .examples {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .ex {
+    margin: 0;
+  }
+
+  .ex figcaption {
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    margin-top: var(--space-3);
+  }
+
+  .cover-card,
+  .slide-card,
+  .banner-card {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .cover-card {
+    aspect-ratio: 4 / 5;
+    background: var(--color-ink-black);
+    color: var(--color-paper-cream);
+    max-width: 360px;
+  }
+
+  .cover-card .t-h1 {
+    color: var(--color-paper-cream);
+  }
+
+  .ex-logo {
+    width: 60%;
+    height: auto;
+  }
+
+  .slide-card {
+    aspect-ratio: 16 / 9;
+    background: var(--color-paper-cream);
+    border: 1px solid var(--color-ink-black);
+  }
+
+  .slide-card .t-h2 {
+    color: var(--color-red-constructivist);
+    max-width: 55%;
+  }
+
+  .ex-photo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 34%;
+    height: 52%;
+    object-fit: cover;
+    border-left: 1px solid var(--color-ink-black);
+    border-top: 1px solid var(--color-ink-black);
+  }
+
+  .banner-card {
+    aspect-ratio: 4 / 1;
+    background: var(--color-red-constructivist);
+    color: var(--color-paper-cream);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ex-logo-sm {
+    width: 36%;
+    height: auto;
+  }
+
+  .footer {
+    border-top: 1px solid var(--color-ink-black);
+  }
+
+  /* Wider screens: side-by-side layouts on the 12-column grid. */
+  @media (min-width: 768px) {
+    .panels {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .logo-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .misuse {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .swatches {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .logo-rules {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .examples {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .examples {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ex-banner {
+      grid-column: 1 / -1;
+    }
+
+    .misuse {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .swatches {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 </style>

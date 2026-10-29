@@ -67,3 +67,24 @@ Defined in `tokens/grid.json`:
 - 15° diagonal tilt for dividers and key elements
 
 CSS can't read custom properties inside `@media`, so the two breakpoints are written in `src/styles/grid.css` and must match the tokens.
+
+## Guidelines page
+
+`src/pages/index.astro` holds the full guidelines: intent, logo, color (with a live WCAG contrast matrix), typography, grid, and three applied examples. All values come from `tokens/` and `logo/`.
+
+## PDF export
+
+```bash
+npm run pdf
+```
+
+Builds the site, then writes `exports/bernardo-reyes-identity.pdf` as one tall page. It needs Google Chrome. If Chrome is installed somewhere else, set `CHROME_PATH` to its binary.
+
+## Deploy
+
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to GitHub Pages.
+
+Before the first deploy:
+
+1. In the repository settings, set **Pages → Source** to **GitHub Actions**.
+2. Set `site` (and `base`, for a project page) in `astro.config.mjs` to match the Pages URL.

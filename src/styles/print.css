@@ -1,0 +1,26 @@
+/*
+ * Print styles. The page exports as a single tall page (see scripts/make-pdf.mjs).
+ */
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print,
+  .grid-overlay {
+    display: none !important;
+  }
+
+  .section,
+  .swatch,
+  .ex,
+  .type-row,
+  .misuse-item {
+    break-inside: avoid;
+  }
+}
