@@ -1,0 +1,15 @@
+{
+  "grid": {
+    "columns": { "value": "12", "comment": "Default. Revisit in step 6." },
+    "gutter": { "value": "24px" },
+    "margin": { "value": "24px" },
+    "maxWidth": { "value": "1200px" },
+    "breakpoint": {
+      "sm": { "value": "480px" },
+      "md": { "value": "768px" },
+      "lg": { "value": "1024px" },
+      "xl": { "value": "1280px" }
+    },
+    "tilt": { "value": "15deg", "comment": "Diagonal rule for dividers and key elements." }
+  }
+}

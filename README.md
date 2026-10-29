@@ -19,7 +19,7 @@ Colombian modernism meets Constructivist graphic design: bold, structured, warm,
 - [x] Color extraction from the moodboard
 - [x] Palette approved
 - [x] Typefaces approved (Option A)
-- [ ] Design tokens and Style Dictionary build
+- [x] Design tokens and Style Dictionary build (npm run tokens)
 - [ ] Wordmark draft
 - [ ] Grid
 - [ ] Guidelines page
@@ -37,3 +37,12 @@ Colombian modernism meets Constructivist graphic design: bold, structured, warm,
 ## Getting started
 
 Requires Node.js 20 or newer. Commands will be added as the project is built.
+
+## Commands
+
+```bash
+npm install        # install packages (Node.js 20 or newer)
+npm run tokens     # build tokens/*.json into src/styles/tokens.css
+```
+
+Fonts come from `@fontsource/anton`, `@fontsource/eb-garamond`, and `@fontsource/ibm-plex-mono`, installed through npm.

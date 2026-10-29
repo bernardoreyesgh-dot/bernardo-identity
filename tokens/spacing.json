@@ -1,0 +1,13 @@
+{
+  "space": {
+    "1": { "value": "4px", "comment": "Default spacing scale: 4px base, doubling and stepping up." },
+    "2": { "value": "8px" },
+    "3": { "value": "12px" },
+    "4": { "value": "16px" },
+    "5": { "value": "24px" },
+    "6": { "value": "32px" },
+    "7": { "value": "48px" },
+    "8": { "value": "64px" },
+    "9": { "value": "96px" }
+  }
+}

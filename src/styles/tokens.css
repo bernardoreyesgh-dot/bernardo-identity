@@ -1,0 +1,47 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --color-red-constructivist: #B92A1E; /** Headlines and key accents. Saturated red from the VKhUTEMAS and Bernie posters. */
+  --color-ink-black: #201A21; /** Text and structure. Near-black from panel 1 and the book covers. */
+  --color-paper-cream: #FBFAF2; /** Page background. Cream paper from the catechism and Lenin posters. */
+  --color-brick-terracotta: #CA7C46; /** Secondary accent. Salmona-style brick and warm terracotta from panel 2. */
+  --color-bauhaus-yellow: #D9AC33; /** Small accent and highlights. Yellow nesting tables and posters. */
+  --color-neutral-warm-gray: #888378; /** Captions and secondary text. Neutral gray across the whole board. */
+  --grid-columns: 12; /** Default. Revisit in step 6. */
+  --grid-gutter: 24px;
+  --grid-margin: 24px;
+  --grid-max-width: 1200px;
+  --grid-breakpoint-sm: 480px;
+  --grid-breakpoint-md: 768px;
+  --grid-breakpoint-lg: 1024px;
+  --grid-breakpoint-xl: 1280px;
+  --grid-tilt: 15deg; /** Diagonal rule for dividers and key elements. */
+  --space-1: 4px; /** Default spacing scale: 4px base, doubling and stepping up. */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --font-family-display: Anton; /** Heavy condensed display for posters and headlines. Constructivist feel. */
+  --font-family-text: EB Garamond; /** Old-style serif for body text. Old print feel. */
+  --font-family-caption: IBM Plex Mono; /** Typewriter-style mono for captions and labels. Bogotá 1970s photo feel. */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-size-caption: 0.8125rem;
+  --font-size-body: 1.125rem;
+  --font-size-lead: 1.375rem;
+  --font-size-h3: 1.75rem;
+  --font-size-h2: 2.5rem;
+  --font-size-h1: 4rem;
+  --font-size-display: 6.5rem;
+  --line-height-tight: 0.95;
+  --line-height-heading: 1.1;
+  --line-height-body: 1.6;
+}
