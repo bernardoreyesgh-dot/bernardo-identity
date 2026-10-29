@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-// Replace `site` with the GitHub Pages URL once the repository exists.
-// For a project page (not a user page), also set `base` to '/<repo-name>'.
+// GitHub Pages project site: https://bernardoreyesgh-dot.github.io/bernardo-identity/
+// If the site moves to a user page or a custom domain, update `site` and `base`.
 export default defineConfig({
-  site: 'https://bernardoreyes.github.io',
+  site: 'https://bernardoreyesgh-dot.github.io',
+  base: '/bernardo-identity',
   output: 'static',
 });
