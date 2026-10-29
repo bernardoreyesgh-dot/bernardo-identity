@@ -1,0 +1,22 @@
+{
+  "color": {
+    "red": {
+      "constructivist": { "value": "#B92A1E", "comment": "Headlines and key accents. Saturated red from the VKhUTEMAS and Bernie posters." }
+    },
+    "ink": {
+      "black": { "value": "#201A21", "comment": "Text and structure. Near-black from panel 1 and the book covers." }
+    },
+    "paper": {
+      "cream": { "value": "#FBFAF2", "comment": "Page background. Cream paper from the catechism and Lenin posters." }
+    },
+    "brick": {
+      "terracotta": { "value": "#CA7C46", "comment": "Secondary accent. Salmona-style brick and warm terracotta from panel 2." }
+    },
+    "bauhaus": {
+      "yellow": { "value": "#D9AC33", "comment": "Small accent and highlights. Yellow nesting tables and posters." }
+    },
+    "neutral": {
+      "warm-gray": { "value": "#888378", "comment": "Captions and secondary text. Neutral gray across the whole board." }
+    }
+  }
+}
