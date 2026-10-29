@@ -2,8 +2,6 @@
 import Base from '../layouts/Base.astro';
 import logoCream from '../../logo/bernie-cream.svg?url';
 import logoMono from '../../logo/bernie-mono.svg?url';
-import logoReversed from '../../logo/bernie-reversed.svg?url';
-import logoCrown from '../../logo/bernie-crown.svg?url';
 import logoCrane from '../../logo/bernie-crane.svg?url';
 
 // Placeholder contact details. Replace these with your real ones before printing.
@@ -13,19 +11,19 @@ const contact = {
   linkedin: 'linkedin.com/in/your-handle',
   phone: '+00 000 000 0000',
 };
-const tagline = 'Have a project? You can call me.';
+const callMe = 'You can call me';
+const role = 'Service Designer · UX Designer';
 ---
 <Base title="Bernardo Reyes — Business cards">
   <main class="cards-page">
     <header class="cards-intro">
       <h1 class="h1">Business cards</h1>
-      <p class="body">Three layouts, each with a front and a back. Size: 3.5 × 2 in (US standard). Contact details are placeholders.</p>
+      <p class="body">Front: name and contact details. Back: "You can call me," the BERNIE logo, and the role below. Size: 3.5 × 2 in. Contact details are placeholders.</p>
     </header>
 
     <section class="variant" aria-labelledby="a-title">
       <h2 id="a-title" class="caption">Layout A · Stacked</h2>
       <div class="card card-a-front">
-        <img class="a-logo" src={logoCream} alt="BERNIE" />
         <div class="a-name">
           <p class="card-name">{contact.name}</p>
           <ul class="contact">
@@ -37,15 +35,15 @@ const tagline = 'Have a project? You can call me.';
         <img class="crane-edge" src={logoCrane} alt="" aria-hidden="true" />
       </div>
       <div class="card card-a-back">
-        <p class="tagline">{tagline}</p>
-        <img class="crown-corner" src={logoCrown} alt="" aria-hidden="true" />
+        <img class="back-logo" src={logoCream} alt="BERNIE" />
+        <p class="tagline">{callMe}</p>
+        <p class="role">{role}</p>
       </div>
     </section>
 
     <section class="variant" aria-labelledby="b-title">
       <h2 id="b-title" class="caption">Layout B · Tilted band</h2>
       <div class="card card-b-front">
-        <img class="b-logo" src={logoMono} alt="BERNIE" />
         <div class="band"><p class="card-name">{contact.name}</p></div>
         <ul class="contact contact-b">
           <li>{contact.mail}</li>
@@ -54,15 +52,15 @@ const tagline = 'Have a project? You can call me.';
         </ul>
       </div>
       <div class="card card-b-back">
-        <img class="crown-big" src={logoCrown} alt="" aria-hidden="true" />
-        <p class="tagline tagline-b">{tagline}</p>
+        <img class="back-logo" src={logoCream} alt="BERNIE" />
+        <p class="tagline">{callMe}</p>
+        <p class="role">{role}</p>
       </div>
     </section>
 
     <section class="variant" aria-labelledby="c-title">
-      <h2 id="c-title" class="caption">Layout C · Logo first</h2>
+      <h2 id="c-title" class="caption">Layout C · Red front</h2>
       <div class="card card-c-front">
-        <img class="c-logo" src={logoCream} alt="BERNIE" />
         <p class="card-name card-name-c">{contact.name}</p>
         <ul class="contact contact-c">
           <li>{contact.mail}</li>
@@ -71,8 +69,9 @@ const tagline = 'Have a project? You can call me.';
         </ul>
       </div>
       <div class="card card-c-back">
-        <img class="crane-wide" src={logoCrane} alt="" aria-hidden="true" />
-        <p class="tagline tagline-c">{tagline}</p>
+        <img class="back-logo" src={logoMono} alt="BERNIE" />
+        <p class="tagline">{callMe}</p>
+        <p class="role">{role}</p>
       </div>
     </section>
   </main>
@@ -138,13 +137,36 @@ const tagline = 'Have a project? You can call me.';
     padding: 0;
     font-size: 7.5pt;
     line-height: 1.5;
-    text-transform: none;
+  }
+
+  .back-logo {
+    position: absolute;
+    left: 0.2in;
+    top: 0.2in;
+    width: 1.3in;
+    height: auto;
   }
 
   .tagline {
+    position: absolute;
+    left: 0.2in;
+    right: 0.2in;
+    top: 0.75in;
     font-family: var(--font-family-display);
+    font-size: 24pt;
     text-transform: uppercase;
     line-height: var(--line-height-tight);
+    margin: 0;
+  }
+
+  .role {
+    position: absolute;
+    left: 0.2in;
+    bottom: 0.2in;
+    font-family: var(--font-family-caption);
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     margin: 0;
   }
 
@@ -154,12 +176,6 @@ const tagline = 'Have a project? You can call me.';
     color: var(--color-paper-cream);
   }
 
-  .a-logo {
-    width: 1.7in;
-    height: auto;
-    display: block;
-  }
-
   .a-name {
     position: absolute;
     left: 0.2in;
@@ -167,7 +183,7 @@ const tagline = 'Have a project? You can call me.';
   }
 
   .a-name .card-name {
-    font-size: 17pt;
+    font-size: 19pt;
     color: var(--color-paper-cream);
   }
 
@@ -182,43 +198,19 @@ const tagline = 'Have a project? You can call me.';
   .card-a-back {
     background: var(--color-red-constructivist);
     color: var(--color-paper-cream);
-    display: flex;
-    align-items: center;
-  }
-
-  .card-a-back .tagline {
-    font-size: 22pt;
-    max-width: 2.8in;
-  }
-
-  .crown-corner {
-    position: absolute;
-    right: 0.2in;
-    top: 0.2in;
-    height: 0.5in;
-    width: auto;
   }
 
   /* Layout B */
   .card-b-front {
     background: var(--color-paper-cream);
     color: var(--color-ink-black);
-    border-top: 0;
-  }
-
-  .b-logo {
-    position: absolute;
-    left: 0.2in;
-    top: 0.14in;
-    width: 1.1in;
-    height: auto;
   }
 
   .band {
     position: absolute;
     left: -0.3in;
     right: -0.3in;
-    top: 0.5in;
+    top: 0.6in;
     height: 0.6in;
     background: var(--color-red-constructivist);
     transform: rotate(calc(-1 * var(--grid-tilt)));
@@ -228,7 +220,7 @@ const tagline = 'Have a project? You can call me.';
   }
 
   .band .card-name {
-    font-size: 17pt;
+    font-size: 19pt;
     color: var(--color-paper-cream);
   }
 
@@ -245,39 +237,17 @@ const tagline = 'Have a project? You can call me.';
     color: var(--color-paper-cream);
   }
 
-  .crown-big {
-    position: absolute;
-    left: 0.25in;
-    top: 0.25in;
-    height: 1.5in;
-    width: auto;
-  }
-
-  .tagline-b {
-    position: absolute;
-    left: 1.35in;
-    right: 0.2in;
-    top: 0.5in;
-    font-size: 17pt;
-  }
-
   /* Layout C */
   .card-c-front {
     background: var(--color-red-constructivist);
     color: var(--color-paper-cream);
   }
 
-  .c-logo {
-    width: 2.2in;
-    height: auto;
-    display: block;
-  }
-
   .card-name-c {
     position: absolute;
     left: 0.2in;
-    bottom: 0.55in;
-    font-size: 15pt;
+    bottom: 0.95in;
+    font-size: 22pt;
     color: var(--color-paper-cream);
   }
 
@@ -293,21 +263,7 @@ const tagline = 'Have a project? You can call me.';
     color: var(--color-ink-black);
   }
 
-  .crane-wide {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0.2in;
-    width: 100%;
-    height: auto;
-  }
-
-  .tagline-c {
-    position: absolute;
-    left: 0.2in;
-    bottom: 0.25in;
-    right: 0.2in;
-    font-size: 18pt;
+  .card-c-back .tagline {
     color: var(--color-red-constructivist);
   }
 
