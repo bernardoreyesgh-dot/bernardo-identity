@@ -1,0 +1,29 @@
+{
+  "font": {
+    "family": {
+      "display": { "value": "Anton", "comment": "Heavy condensed display for posters and headlines. Constructivist feel." },
+      "text": { "value": "EB Garamond", "comment": "Old-style serif for body text. Old print feel." },
+      "caption": { "value": "IBM Plex Mono", "comment": "Typewriter-style mono for captions and labels. Bogotá 1970s photo feel." }
+    },
+    "weight": {
+      "regular": { "value": "400" },
+      "medium": { "value": "500" },
+      "semibold": { "value": "600" },
+      "bold": { "value": "700" }
+    }
+  },
+  "fontSize": {
+    "caption": { "value": "0.8125rem" },
+    "body": { "value": "1.125rem" },
+    "lead": { "value": "1.375rem" },
+    "h3": { "value": "1.75rem" },
+    "h2": { "value": "2.5rem" },
+    "h1": { "value": "4rem" },
+    "display": { "value": "6.5rem" }
+  },
+  "lineHeight": {
+    "tight": { "value": "0.95" },
+    "heading": { "value": "1.1" },
+    "body": { "value": "1.6" }
+  }
+}

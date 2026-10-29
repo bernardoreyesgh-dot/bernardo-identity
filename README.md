@@ -18,7 +18,7 @@ Colombian modernism meets Constructivist graphic design: bold, structured, warm,
 - [x] Project set up
 - [x] Color extraction from the moodboard
 - [x] Palette approved
-- [ ] Typefaces approved and installed
+- [x] Typefaces approved (Option A)
 - [ ] Design tokens and Style Dictionary build
 - [ ] Wordmark draft
 - [ ] Grid
