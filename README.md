@@ -90,3 +90,13 @@ Before the first deploy:
 
 1. In the repository settings, set **Pages → Source** to **GitHub Actions**.
 2. Set `site` (and `base`, for a project page) in `astro.config.mjs` to match the Pages URL.
+
+## Business cards
+
+`src/pages/cards.astro` shows three card layouts (A, B, C), each with a front and a back, at 3.5 × 2 in.
+
+```bash
+npm run cards-pdf
+```
+
+Writes `exports/bernardo-reyes-business-cards.pdf`, one card per page. The contact details (email, LinkedIn, phone) are placeholders. Replace them in the `contact` object at the top of `src/pages/cards.astro` before printing.

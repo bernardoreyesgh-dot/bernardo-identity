@@ -1,0 +1,346 @@
+---
+import Base from '../layouts/Base.astro';
+import logoCream from '../../logo/bernie-cream.svg?url';
+import logoMono from '../../logo/bernie-mono.svg?url';
+import logoReversed from '../../logo/bernie-reversed.svg?url';
+import logoCrown from '../../logo/bernie-crown.svg?url';
+import logoCrane from '../../logo/bernie-crane.svg?url';
+
+// Placeholder contact details. Replace these with your real ones before printing.
+const contact = {
+  name: 'Bernardo Reyes',
+  mail: 'your.email@example.com',
+  linkedin: 'linkedin.com/in/your-handle',
+  phone: '+00 000 000 0000',
+};
+const tagline = 'Have a project? You can call me.';
+---
+<Base title="Bernardo Reyes — Business cards">
+  <main class="cards-page">
+    <header class="cards-intro">
+      <h1 class="h1">Business cards</h1>
+      <p class="body">Three layouts, each with a front and a back. Size: 3.5 × 2 in (US standard). Contact details are placeholders.</p>
+    </header>
+
+    <section class="variant" aria-labelledby="a-title">
+      <h2 id="a-title" class="caption">Layout A · Stacked</h2>
+      <div class="card card-a-front">
+        <img class="a-logo" src={logoCream} alt="BERNIE" />
+        <div class="a-name">
+          <p class="card-name">{contact.name}</p>
+          <ul class="contact">
+            <li>{contact.mail}</li>
+            <li>{contact.linkedin}</li>
+            <li>{contact.phone}</li>
+          </ul>
+        </div>
+        <img class="crane-edge" src={logoCrane} alt="" aria-hidden="true" />
+      </div>
+      <div class="card card-a-back">
+        <p class="tagline">{tagline}</p>
+        <img class="crown-corner" src={logoCrown} alt="" aria-hidden="true" />
+      </div>
+    </section>
+
+    <section class="variant" aria-labelledby="b-title">
+      <h2 id="b-title" class="caption">Layout B · Tilted band</h2>
+      <div class="card card-b-front">
+        <img class="b-logo" src={logoMono} alt="BERNIE" />
+        <div class="band"><p class="card-name">{contact.name}</p></div>
+        <ul class="contact contact-b">
+          <li>{contact.mail}</li>
+          <li>{contact.linkedin}</li>
+          <li>{contact.phone}</li>
+        </ul>
+      </div>
+      <div class="card card-b-back">
+        <img class="crown-big" src={logoCrown} alt="" aria-hidden="true" />
+        <p class="tagline tagline-b">{tagline}</p>
+      </div>
+    </section>
+
+    <section class="variant" aria-labelledby="c-title">
+      <h2 id="c-title" class="caption">Layout C · Logo first</h2>
+      <div class="card card-c-front">
+        <img class="c-logo" src={logoCream} alt="BERNIE" />
+        <p class="card-name card-name-c">{contact.name}</p>
+        <ul class="contact contact-c">
+          <li>{contact.mail}</li>
+          <li>{contact.linkedin}</li>
+          <li>{contact.phone}</li>
+        </ul>
+      </div>
+      <div class="card card-c-back">
+        <img class="crane-wide" src={logoCrane} alt="" aria-hidden="true" />
+        <p class="tagline tagline-c">{tagline}</p>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  /* Card size: 3.5 in by 2 in. Every card is one printed page. */
+  .cards-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-7);
+  }
+
+  .h1 {
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-h2);
+    text-transform: uppercase;
+    color: var(--color-red-constructivist);
+    margin: 0 0 var(--space-3);
+  }
+
+  .body {
+    max-width: 62ch;
+  }
+
+  .caption {
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  .variant {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .card {
+    position: relative;
+    width: 3.5in;
+    height: 2in;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0.2in;
+    font-family: var(--font-family-caption);
+    box-shadow: 0 0 0 1px var(--color-ink-black);
+  }
+
+  .card-name {
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-regular);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: var(--line-height-tight);
+  }
+
+  .contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 7.5pt;
+    line-height: 1.5;
+    text-transform: none;
+  }
+
+  .tagline {
+    font-family: var(--font-family-display);
+    text-transform: uppercase;
+    line-height: var(--line-height-tight);
+    margin: 0;
+  }
+
+  /* Layout A */
+  .card-a-front {
+    background: var(--color-ink-black);
+    color: var(--color-paper-cream);
+  }
+
+  .a-logo {
+    width: 1.7in;
+    height: auto;
+    display: block;
+  }
+
+  .a-name {
+    position: absolute;
+    left: 0.2in;
+    bottom: 0.3in;
+  }
+
+  .a-name .card-name {
+    font-size: 17pt;
+    color: var(--color-paper-cream);
+  }
+
+  .crane-edge {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 1.1in;
+    height: auto;
+  }
+
+  .card-a-back {
+    background: var(--color-red-constructivist);
+    color: var(--color-paper-cream);
+    display: flex;
+    align-items: center;
+  }
+
+  .card-a-back .tagline {
+    font-size: 22pt;
+    max-width: 2.8in;
+  }
+
+  .crown-corner {
+    position: absolute;
+    right: 0.2in;
+    top: 0.2in;
+    height: 0.5in;
+    width: auto;
+  }
+
+  /* Layout B */
+  .card-b-front {
+    background: var(--color-paper-cream);
+    color: var(--color-ink-black);
+    border-top: 0;
+  }
+
+  .b-logo {
+    position: absolute;
+    left: 0.2in;
+    top: 0.14in;
+    width: 1.1in;
+    height: auto;
+  }
+
+  .band {
+    position: absolute;
+    left: -0.3in;
+    right: -0.3in;
+    top: 0.5in;
+    height: 0.6in;
+    background: var(--color-red-constructivist);
+    transform: rotate(calc(-1 * var(--grid-tilt)));
+    display: flex;
+    align-items: center;
+    padding-left: 0.5in;
+  }
+
+  .band .card-name {
+    font-size: 17pt;
+    color: var(--color-paper-cream);
+  }
+
+  .contact-b {
+    position: absolute;
+    right: 0.2in;
+    bottom: 0.2in;
+    text-align: right;
+    color: var(--color-ink-black);
+  }
+
+  .card-b-back {
+    background: var(--color-ink-black);
+    color: var(--color-paper-cream);
+  }
+
+  .crown-big {
+    position: absolute;
+    left: 0.25in;
+    top: 0.25in;
+    height: 1.5in;
+    width: auto;
+  }
+
+  .tagline-b {
+    position: absolute;
+    left: 1.35in;
+    right: 0.2in;
+    top: 0.5in;
+    font-size: 17pt;
+  }
+
+  /* Layout C */
+  .card-c-front {
+    background: var(--color-red-constructivist);
+    color: var(--color-paper-cream);
+  }
+
+  .c-logo {
+    width: 2.2in;
+    height: auto;
+    display: block;
+  }
+
+  .card-name-c {
+    position: absolute;
+    left: 0.2in;
+    bottom: 0.55in;
+    font-size: 15pt;
+    color: var(--color-paper-cream);
+  }
+
+  .contact-c {
+    position: absolute;
+    left: 0.2in;
+    bottom: 0.2in;
+    color: var(--color-paper-cream);
+  }
+
+  .card-c-back {
+    background: var(--color-paper-cream);
+    color: var(--color-ink-black);
+  }
+
+  .crane-wide {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0.2in;
+    width: 100%;
+    height: auto;
+  }
+
+  .tagline-c {
+    position: absolute;
+    left: 0.2in;
+    bottom: 0.25in;
+    right: 0.2in;
+    font-size: 18pt;
+    color: var(--color-red-constructivist);
+  }
+
+  /* Print: one card per page at true size. */
+  @media print {
+    @page {
+      size: 3.5in 2in;
+      margin: 0;
+    }
+
+    .cards-intro,
+    .caption {
+      display: none;
+    }
+
+    .cards-page {
+      padding: 0;
+      max-width: none;
+    }
+
+    .variant {
+      display: block;
+    }
+
+    .card {
+      box-shadow: none;
+      break-after: page;
+      max-width: none;
+    }
+
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>

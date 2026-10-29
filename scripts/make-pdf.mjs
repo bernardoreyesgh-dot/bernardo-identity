@@ -26,8 +26,10 @@ await access(chrome).catch(() => {
   throw new Error(`Chrome not found at ${chrome}. Set CHROME_PATH to your Chrome binary.`);
 });
 
+const BASE = '/bernardo-identity';
 const server = createServer(async (req, res) => {
-  const path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname));
+  let path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname));
+  if (path.startsWith(BASE)) path = path.slice(BASE.length) || '/';
   let file = join(dist, path.endsWith('/') ? `${path}index.html` : path);
   let body;
   try {
@@ -46,7 +48,7 @@ const browser = await puppeteer.launch({ executablePath: chrome, headless: true,
 try {
   const page = await browser.newPage();
   await page.setViewport({ width: WIDTH, height: 900 });
-  await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'networkidle0' });
+  await page.goto(`http://127.0.0.1:${port}${BASE}/`, { waitUntil: 'networkidle0' });
   await page.evaluate(() => document.fonts.ready);
   await page.emulateMediaType('print');
   const height = await page.evaluate(() => Math.ceil(document.documentElement.scrollHeight));
