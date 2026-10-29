@@ -1,14 +1,22 @@
 {
   "grid": {
-    "columns": { "value": "12", "comment": "Default. Revisit in step 6." },
-    "gutter": { "value": "24px" },
-    "margin": { "value": "24px" },
+    "columns": {
+      "mobile": { "value": "4", "comment": "Below 768px." },
+      "tablet": { "value": "8", "comment": "768px to 1023px." },
+      "desktop": { "value": "12", "comment": "1024px and up." }
+    },
+    "gutter": {
+      "mobile": { "value": "16px" },
+      "desktop": { "value": "24px", "comment": "Used from 768px up." }
+    },
+    "margin": {
+      "mobile": { "value": "16px" },
+      "desktop": { "value": "24px", "comment": "Used from 768px up." }
+    },
     "maxWidth": { "value": "1200px" },
     "breakpoint": {
-      "sm": { "value": "480px" },
-      "md": { "value": "768px" },
-      "lg": { "value": "1024px" },
-      "xl": { "value": "1280px" }
+      "tablet": { "value": "768px" },
+      "desktop": { "value": "1024px" }
     },
     "tilt": { "value": "15deg", "comment": "Diagonal rule for dividers and key elements." }
   }

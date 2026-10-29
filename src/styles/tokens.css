@@ -9,14 +9,16 @@
   --color-brick-terracotta: #CA7C46; /** Secondary accent. Salmona-style brick and warm terracotta from panel 2. */
   --color-bauhaus-yellow: #D9AC33; /** Small accent and highlights. Yellow nesting tables and posters. */
   --color-neutral-warm-gray: #888378; /** Captions and secondary text. Neutral gray across the whole board. */
-  --grid-columns: 12; /** Default. Revisit in step 6. */
-  --grid-gutter: 24px;
-  --grid-margin: 24px;
+  --grid-columns-mobile: 4; /** Below 768px. */
+  --grid-columns-tablet: 8; /** 768px to 1023px. */
+  --grid-columns-desktop: 12; /** 1024px and up. */
+  --grid-gutter-mobile: 16px;
+  --grid-gutter-desktop: 24px; /** Used from 768px up. */
+  --grid-margin-mobile: 16px;
+  --grid-margin-desktop: 24px; /** Used from 768px up. */
   --grid-max-width: 1200px;
-  --grid-breakpoint-sm: 480px;
-  --grid-breakpoint-md: 768px;
-  --grid-breakpoint-lg: 1024px;
-  --grid-breakpoint-xl: 1280px;
+  --grid-breakpoint-tablet: 768px;
+  --grid-breakpoint-desktop: 1024px;
   --grid-tilt: 15deg; /** Diagonal rule for dividers and key elements. */
   --space-1: 4px; /** Default spacing scale: 4px base, doubling and stepping up. */
   --space-2: 8px;

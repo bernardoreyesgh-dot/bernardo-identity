@@ -55,3 +55,15 @@ Fonts come from `@fontsource/anton`, `@fontsource/eb-garamond`, and `@fontsource
 - `logo/wordmark-option-*.svg`: the three original drafts, kept for reference
 
 The wordmark is a first draft. Replace it with your own drawing when ready, keeping the same file names.
+
+## Grid
+
+Defined in `tokens/grid.json`:
+
+- 4 columns below 768px, 8 from 768px, 12 from 1024px
+- Gutter 16px on mobile, 24px from 768px
+- Margin 16px on mobile, 24px from 768px
+- Max width 1200px
+- 15° diagonal tilt for dividers and key elements
+
+CSS can't read custom properties inside `@media`, so the two breakpoints are written in `src/styles/grid.css` and must match the tokens.
