@@ -46,3 +46,12 @@ npm run tokens     # build tokens/*.json into src/styles/tokens.css
 ```
 
 Fonts come from `@fontsource/anton`, `@fontsource/eb-garamond`, and `@fontsource/ibm-plex-mono`, installed through npm.
+
+## Logo files
+
+- `logo/wordmark-color.svg`: approved direction (Option A, stacked slant), ink and red on transparent
+- `logo/wordmark-mono.svg`: single color, ink
+- `logo/wordmark-reversed.svg`: cream on an ink background
+- `logo/wordmark-option-*.svg`: the three original drafts, kept for reference
+
+The wordmark is a first draft. Replace it with your own drawing when ready, keeping the same file names.
