@@ -11,6 +11,7 @@ import logoCrown from '../../logo/bernie-crown.svg?url';
 import logoCrane from '../../logo/bernie-crane.svg?url';
 import logoMono from '../../logo/bernie-mono.svg?url';
 import logoReversed from '../../logo/bernie-reversed.svg?url';
+import logoCream from '../../logo/bernie-cream.svg?url';
 
 const c = colorTokens.color;
 const palette = [
@@ -268,9 +269,15 @@ const g = gridTokens.grid;
 
         <figure class="ex ex-slide">
           <div class="slide-card">
-            <p class="t-caption">Proyecto 01 · Bogotá</p>
+            <p class="t-caption">Project 01 · Bogotá · Service design</p>
             <p class="t-h2">Un mapa de la ciudad</p>
             <div class="tilt-rule tilt-rule-sm" aria-hidden="true"></div>
+            <dl class="slide-facts">
+              <div><dt>My role</dt><dd>Research and service blueprint</dd></div>
+              <div><dt>Overview</dt><dd>How residents move through public services</dd></div>
+              <div><dt>Research goal</dt><dd>Find where the journey breaks</dd></div>
+              <div><dt>Impact</dt><dd>Three service changes proposed</dd></div>
+            </dl>
             <img src={panel2.src} alt="" class="ex-photo" />
           </div>
           <figcaption>Project slide (16:9)</figcaption>
@@ -278,7 +285,7 @@ const g = gridTokens.grid;
 
         <figure class="ex ex-banner">
           <div class="banner-card">
-            <img src={logoReversed} alt="" class="ex-logo-sm" />
+            <img src={logoCream} alt="" class="ex-logo-sm" />
             <p class="t-caption">Bernardo Reyes · Service Design · SCAD</p>
           </div>
           <figcaption>LinkedIn banner (4:1)</figcaption>
@@ -769,9 +776,15 @@ const g = gridTokens.grid;
     border: 1px solid var(--color-ink-black);
   }
 
+  .slide-card {
+    padding: var(--space-4);
+    gap: var(--space-2);
+  }
+
   .slide-card .t-h2 {
     color: var(--color-red-constructivist);
     max-width: 55%;
+    font-size: var(--font-size-h3);
   }
 
   .ex-photo {
@@ -915,5 +928,30 @@ const g = gridTokens.grid;
       transition: none;
       transform: none;
     }
+  }
+
+  .slide-facts {
+    margin: 0;
+    display: grid;
+    gap: var(--space-1);
+    max-width: 56%;
+  }
+
+  .slide-facts div {
+    border-top: 1px solid var(--color-ink-black);
+    padding-top: 2px;
+  }
+
+  .slide-facts dt {
+    font-family: var(--font-family-caption);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .slide-facts dd {
+    margin: 0;
+    font-size: var(--font-size-caption);
+    line-height: var(--line-height-body);
   }
 </style>
